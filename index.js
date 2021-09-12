@@ -1,9 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express()
 
 app.use(cors());
+app.use(bodyParser.json());
+
 
 // function rootCall(req,res) {
 //     res.send('Thank you very much')
@@ -26,6 +29,8 @@ app.get('/fruits/banana',(req,res)=>{
     res.send({fruit:'banana',quantity:1000,price:10000});
 })
 
+// Get
+
 app.get('/users/:id',(req,res)=>{
     // console.log(req.params);
     const id = req.params.id;
@@ -33,6 +38,12 @@ app.get('/users/:id',(req,res)=>{
     const name = users[id];
     res.send({id, name});
 
+});
+
+// Post
+app.post('/addUser',(req,res)=>{
+    console.log(req.body);
 })
+
 
 app.listen(3000, ()=> console.log('Listening to port 3000'))
