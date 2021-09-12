@@ -38,11 +38,16 @@ app.get('/users/:id',(req,res)=>{
     const name = users[id];
     res.send({id, name});
 
-});
+})
 
 // Post
-app.post('/addUser',(req,res)=>{
-    console.log(req.body);
+app.post('/addUser' , (req,res) => {
+    // console.log('data received: ' , req.body);
+    // save to database
+    const user = req.body;
+    user.id = 55;
+    // res.send(req.body);
+    res.send(user);
 })
 
 
